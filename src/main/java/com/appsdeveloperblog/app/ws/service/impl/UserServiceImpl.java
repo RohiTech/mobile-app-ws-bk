@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	Utils utils;
 	
-	@Autowired
+	//@Autowired
 	BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	@Override
@@ -58,7 +58,8 @@ public class UserServiceImpl implements UserService {
 		
 		String publicUserId = utils.generateUserId(30);
 		userEntity.setUserId(publicUserId);
-		userEntity.setEncrytedPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+		//userEntity.setEncrytedPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+		userEntity.setEncrytedPassword(user.getPassword());
 		
 		UserEntity storedUserDetails = userRepository.save(userEntity);
 		
